@@ -46,6 +46,6 @@ docs/_build/
 #mavr 3, emacs#
 *~
 \#*\#
-.emacs.desktop.lock
+.emacs.desktop*
 #mavr 1, codeval#
 *.py2
