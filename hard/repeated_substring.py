@@ -27,6 +27,8 @@ In order to be eligible to push solution to the employer (Email Cherry), you mus
     Location: United States
     Minimum Education: High School
     Your email / resume will always be sent to the employer
+
+http://algolist.manual.ru/search/lrs/
 """
 
 import sys
@@ -35,8 +37,18 @@ def main(dfile):
     with open(dfile, 'r') as f:
         for l in f:
             s = l.rstrip('\n')
-            
+            d = ['' for i in range(0, len(s))]
+            m = [[0 for i in range(0, len(s))] for i in range(0, len(s))]
+            for i, ci in enumerate(s):
+                for j, cj in enumerate(s[i:], i):
+                    if ci == cj:
+                        m[i][j] = 1
+                        d[j - i] += ci
+                    
 
+            print d
+            for i in range(0,len(s)):
+                print m[i]
     return 0
 
 if __name__ == '__main__':
