@@ -43,9 +43,10 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-#mavr 3, emacs#
+#mavr a3, emacs#
 *~
 \#*\#
 .emacs.desktop*
-#mavr 1, codeval#
+#mavr a2, codeval#
 *.py2
+*.py3
