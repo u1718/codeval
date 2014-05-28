@@ -9,10 +9,18 @@ There are two sequences. The first sequence consists of digits "0" and "1", the 
 2. "1" can be transformed into non empty sequence of letters "A" ("A", "AA", "AAA" etc.) or to non empty sequence of letters "B" ("B", "BB", "BBB" etc) e.g.
 
 Input sample:
+1010 AAAAABBBBAAAA
+00 AAAAAA
+01001110 AAAABAAABBBBBBAAAAAAA
+1100110 BBAABABBA
 
 Your program should accept as its first argument a path to a filename. Each line in this file contains a binary sequence and a sequence of letters "A" and "B" separated by a single whitespace. E.g.
 
 Output sample:
+Yes
+Yes
+Yes
+No
 
 For each test case print out "Yes" if the transformation is possible, otherwise print "No". E.g.
 
@@ -54,3 +62,4 @@ def main(dfile):
             
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1]))
+
