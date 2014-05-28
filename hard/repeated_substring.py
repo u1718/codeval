@@ -29,6 +29,7 @@ In order to be eligible to push solution to the employer (Email Cherry), you mus
     Your email / resume will always be sent to the employer
 
 http://algolist.manual.ru/search/lrs/
+Algorithms on Strings, Trees and Sequences: Computer Science and Computational Biology. Dan Gusfield (p 183)
 """
 
 import sys
