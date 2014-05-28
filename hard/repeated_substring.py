@@ -32,23 +32,23 @@ http://algolist.manual.ru/search/lrs/
 """
 
 import sys
+import re
 
 def main(dfile):
     with open(dfile, 'r') as f:
         for l in f:
-            s = l.rstrip('\n') + '$'
-            print s
-            suffixm = [s[i:] for i in range(len(s))]
-            suffixm.sort()
-            print suffixm
-            matchm = []
-            for i in range(len(suffixm) - 1):
-                matchm.append(filter(lambda (a, b): a == b, zip(suffixm[i], suffixm[i + 1])))
-                
-                
-            print matchm
+            s = l.rstrip('\n')
+            rep_subs = []
+            for i in range(len(s) - 1):
+                for j in range(i + 1, i + 1 + (len(s) + 1 - i) / 2):
+                    if not s[i:j].strip():
+                        continue
+                        
+                    m = re.search(s[i:j], s[j:])
+                    if m:
+                        rep_subs.append(m.group())
             
-
+            print max(rep_subs, key=len) if rep_subs else 'NONE'
             
     return 0
 
