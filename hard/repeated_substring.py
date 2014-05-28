@@ -36,19 +36,20 @@ import sys
 def main(dfile):
     with open(dfile, 'r') as f:
         for l in f:
-            s = l.rstrip('\n')
-            d = ['' for i in range(0, len(s))]
-            m = [[0 for i in range(0, len(s))] for i in range(0, len(s))]
-            for i, ci in enumerate(s):
-                for j, cj in enumerate(s[i:], i):
-                    if ci == cj:
-                        m[i][j] = 1
-                        d[j - i] += ci
-                    
+            s = l.rstrip('\n') + '$'
+            print s
+            suffixm = [s[i:] for i in range(len(s))]
+            suffixm.sort()
+            print suffixm
+            matchm = []
+            for i in range(len(suffixm) - 1):
+                matchm.append(filter(lambda (a, b): a == b, zip(suffixm[i], suffixm[i + 1])))
+                
+                
+            print matchm
+            
 
-            print d
-            for i in range(0,len(s)):
-                print m[i]
+            
     return 0
 
 if __name__ == '__main__':
