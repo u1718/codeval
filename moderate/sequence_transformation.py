@@ -41,19 +41,25 @@ def main(dfile):
     with open(dfile, 'r') as f:
         for l in f:
             bs, ls = l.split()
-            for p1 in itertools.product('AB', repeat=bs.count('1')):
-                i = 0
-                p = r''
-                for d in bs:
-                    if d == '0':
-                        p += 'A+'
+            cc = bs[0]
+            ccc = 1
+            p = r''
+            for c in bs[1:] + '2':
+                if cc == c:
+                    ccc += 1
+                else:
+                    if cc == '0':
+                        p += r'A{'+str(ccc)+',}'
                     else:
-                        p += p1[i] + '+'
-                        i += 1
+                        p += r'(?:A{' + str(ccc) + ',}|B{' + str(ccc) + ',})'
+                        
+                    cc = c
+                    ccc = 1
 
-                if re.match(p + '$', ls):
-                    print 'Yes'
-                    break
+            print l, bs, p
+                    
+            if re.match(p + '$', ls):
+                print 'Yes'
 
             else:
                 print 'No'
