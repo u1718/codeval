@@ -53,12 +53,11 @@ def main(dfile):
         for l in dfld:
             l = l.strip('\n')
             nra = 0
+            nla = 0
             state = 'Start'
             for e in l:
                 if e == '>':
-                    if state == 'Start':
-                        state = '>'
-                    elif state == '>':
+                    if state == '>':
                         state = '>>'
                     elif state == '>>':
                         state = '>>'
@@ -66,26 +65,10 @@ def main(dfile):
                         nra += 1
                         state = '>'
                     else:
-                        state = 'Start'
+                        state = '>'
 
-                elif e == '-':
-                    if state == '>>':
-                        state = '>>-'
-                    elif state == '>>-':
-                        state = '>>--'
-                    else:
-                        state = 'Start'
-
-                else:
-                    state = 'Start'
-
-            nla = 0
-            state = 'Start'
-            for e in l:
-                if e == '<':
-                    if state == 'Start':
-                        state = '<'
-                    elif state == '<':
+                elif e == '<':
+                    if state == '<':
                         state = '<'
                     elif state == '<--':
                         state = '<--<'
@@ -93,10 +76,14 @@ def main(dfile):
                         nla += 1
                         state = '<'
                     else:
-                        state = 'Start'
+                        state = '<'
 
                 elif e == '-':
-                    if state == '<':
+                    if state == '>>':
+                        state = '>>-'
+                    elif state == '>>-':
+                        state = '>>--'
+                    elif state == '<':
                         state = '<-'
                     elif state == '<-':
                         state = '<--'
