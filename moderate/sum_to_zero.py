@@ -39,20 +39,30 @@ def main(dfile):
             l = l.strip('\n')
             matrix = [int(n) for n in l.split(',')]
 
-            print([sum(e) for e in cnk(matrix, 4)].count(0))
+            print([sum(e) for e in cnk(matrix)].count(0))
             
     return 0
 
-def cnk(list, num):
+def cnk(list):
+    """
+    Generate all combinations of the elements of list taken 4 at a time.
+    """
+
+    for i in range(0, len(list) - 3):
+        for j in range(i + 1, len(list) - 2):
+            for k in range(j + 1, len(list) - 1):
+                for z in range(k + 1, len(list)):
+                    yield [list[e] for e in [i, j, k, z]]
+
+    return None
+
+def cnkr(list, num):
     """
     len(list) > num
     """
 
-    for i in range(0, len(list) - num + 1):
-        for j in range(i + 1, len(list) - num + 2):
-            for k in range(j + 1, len(list) - num + 3):
-                for z in range(k + 1, len(list) - num + 4):
-                    yield [list[e] for e in [i, j, k, z]]
+    for i in range(0, num):
+        yield r.append(e())
 
     return None
 
