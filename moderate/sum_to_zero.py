@@ -40,8 +40,6 @@ def main(dfile):
             matrix = [int(n) for n in l.split(',')]
 
             print([sum(e) for e in cnk(matrix, 4)].count(0))
-
-            
             
     return 0
 
@@ -50,15 +48,13 @@ def cnk(list, num):
     len(list) > num
     """
 
-    r = []
-    
     for i in range(0, len(list) - num + 1):
         for j in range(i + 1, len(list) - num + 2):
             for k in range(j + 1, len(list) - num + 3):
                 for z in range(k + 1, len(list) - num + 4):
-                    r.append([list[e] for e in [i, j, k, z]])
+                    yield [list[e] for e in [i, j, k, z]]
 
-    return r
+    return None
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1]))
