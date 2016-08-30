@@ -54,10 +54,11 @@ def main(dfile):
     @type of dfile: str
     """
 
-    state = ['Critical' for i in range(0, 40)]
+    state = ['Critical' for i in range(0, 41)]
     state[0] = 'Done'
     state[1] = state[2] = 'Low'
     state[3] = state[4] = 'Medium'
+    state[5] = state[6] = 'High'
     
     
     with open(dfile, 'r') as dfld:

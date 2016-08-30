@@ -39,11 +39,56 @@ def main(dfile):
             l = l.strip('\n')
             matrix = [int(n) for n in l.split(',')]
 
-            print([sum(e) for e in cnk(matrix)].count(0))
+            print([sum(e) for e in choose_iter(matrix,4)].count(0))
             
     return 0
 
-def cnk(list):
+def choose_iter(elements, length):
+    """
+    http://stackoverflow.com/questions/127704/algorithm-to-return-all-combinations-of-k-elements-from-n/2837693#2837693
+    """
+    for i in range(len(elements)):
+        if length == 1:
+            yield (elements[i],)
+        else:
+            for next in choose_iter(elements[i+1 : len(elements)], length-1):
+                yield (elements[i],) + next
+                
+def combinations(iterable, r):
+    """
+    https://docs.python.org/dev/library/itertools.html
+    combinations('ABCD', 2) --> AB AC AD BC BD CD
+    combinations(range(4), 3) --> 012 013 023 123
+    """
+    pool = tuple(iterable)
+    n = len(pool)
+    if r > n:
+        return
+    indices = list(range(r))
+    print(indices)
+    yield tuple(pool[i] for i in indices)
+    while True:
+        for i in reversed(range(r)):
+            if indices[i] != i + n - r:
+                break
+        else:
+            return
+        indices[i] += 1
+        for j in range(i+1, r):
+            indices[j] = indices[j-1] + 1
+        print(indices)
+        yield tuple(pool[i] for i in indices)
+        
+def combinations1(list, _):
+    """
+    Generate all combinations of the elements of list taken 4 at a time.
+    """
+
+    import itertools
+    
+    return itertools.combinations(list, 4)
+
+def combinations2(list, _):
     """
     Generate all combinations of the elements of list taken 4 at a time.
     """
@@ -56,16 +101,5 @@ def cnk(list):
 
     return None
 
-def cnkr(list, num):
-    """
-    len(list) > num
-    """
-
-    for i in range(0, num):
-        yield r.append(e())
-
-    return None
-
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1]))
-    

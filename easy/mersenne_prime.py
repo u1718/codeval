@@ -52,8 +52,10 @@ def main(dfile):
                 print('3, 7')
             elif n < 127:
                 print('3, 7, 31')
-            else:
+            elif n < 2047:
                 print('3, 7, 31, 127')
+            else: # The number in a test case can be from 4 to 3,000!
+                print('3, 7, 31, 127, 2047')
 
             
     return 0
