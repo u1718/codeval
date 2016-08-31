@@ -87,11 +87,10 @@ def main(dfile):
                         state = '<-'
                     elif state == '<-':
                         state = '<--'
+                    elif state == '<--<':
+                        state = '<-'
                     else:
                         state = 'Start'
-
-                else:
-                    state = 'Start'
 
             print(nra + nla)
 
