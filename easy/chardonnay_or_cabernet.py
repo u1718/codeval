@@ -66,8 +66,15 @@ def main(dfile):
             wines, letters = l.split(' | ')
             wines = wines.split()
 
-            res = ' '.join(filter(lambda w: all([e in w for e in letters]),
-                                  wines))
+            letters_count = dict()
+            letters_count = {c: letters.count(c) for c in letters
+                                 if c not in letters_count}
+            res = ' '.join(
+                filter(
+                    lambda w: all([w.count(k) >= v
+                                       for k, v in letters_count.items()]),
+                    wines))
+            
             print(res or 'False')
             
     return 0
