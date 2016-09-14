@@ -49,7 +49,7 @@ def main(dfile):
     with open(dfile, 'r') as f:
         for l in f:
             ws = l.strip().split()
-            imax = max(range(len(ws)), key=lambda e: len(ws.__getitem__(e)))
+            imax = max(range(len(ws)), key = lambda e: len(ws.__getitem__(e)))
             print(' '.join(['*'*z + c for c, z in zip(ws[imax],
                                                       range(len(ws[imax])))]))
             
