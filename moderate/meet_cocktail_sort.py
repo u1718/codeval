@@ -44,7 +44,7 @@ Constraints:
 import sys
 
 def main(dfile):
-    """Compare Points
+    """Meet Cocktail sort
     @param dfile: data file path
     @type of dfile: str
     """
